@@ -3,4 +3,4 @@ data/img_augmented/
 
 # Ignore venv folders
 venv/
-.venv
+.venv/
