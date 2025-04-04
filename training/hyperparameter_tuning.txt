@@ -1,0 +1,44 @@
+Train set size: 6370
+Validation set size: 1593
+Test set size: 1991
+
+Hyperparameter Tuning Trials:
+----------------------------------------
+Trial 0:
+    - Hyperparameters: {'lr': 0.0019318075503189916, 'batch_size': 64, 'optimizer': 'Adam'}
+    - Epoch 1/3: Train Loss: 2.2294, Train Acc: 0.1719 - Val Loss: 2.0087, Val Acc: 0.2586
+    - Epoch 2/3: Train Loss: 1.9678, Train Acc: 0.2692 - Val Loss: 1.6915, Val Acc: 0.3522
+    - Epoch 3/3: Train Loss: 1.6520, Train Acc: 0.3801 - Val Loss: 1.4462, Val Acc: 0.4350
+    - Final Value: 1.4462
+----------------------------------------
+Trial 1:
+    - Hyperparameters: {'lr': 0.0007085345131040934, 'batch_size': 32, 'optimizer': 'SGD'}
+    - Epoch 1/3: Train Loss: 2.3982, Train Acc: 0.0936 - Val Loss: 2.3975, Val Acc: 0.0917
+    - Epoch 2/3: Train Loss: 2.3974, Train Acc: 0.0923 - Val Loss: 2.3968, Val Acc: 0.0917
+    - Epoch 3/3: Train Loss: 2.3968, Train Acc: 0.0934 - Val Loss: 2.3961, Val Acc: 0.1023
+    - Final Value: 2.3961
+----------------------------------------
+Trial 2:
+    - Hyperparameters: {'lr': 0.0003192023794797806, 'batch_size': 64, 'optimizer': 'Adam'}
+    - Epoch 1/3: Train Loss: 2.3110, Train Acc: 0.1363 - Val Loss: 2.1716, Val Acc: 0.2072
+    - Epoch 2/3: Train Loss: 2.1192, Train Acc: 0.2130 - Val Loss: 1.9809, Val Acc: 0.2461
+    - Epoch 3/3: Train Loss: 1.9856, Train Acc: 0.2598 - Val Loss: 1.8286, Val Acc: 0.3346
+    - Final Value: 1.8286
+----------------------------------------
+Trial 3:
+    - Hyperparameters: {'lr': 0.00026920374306895866, 'batch_size': 64, 'optimizer': 'Adam'}
+    - Epoch 1/3: Train Loss: 2.3176, Train Acc: 0.1331 - Val Loss: 2.1560, Val Acc: 0.1977
+    - Epoch 2/3: Train Loss: 2.1523, Train Acc: 0.1987 - Val Loss: 2.0170, Val Acc: 0.2304
+    - Epoch 3/3: Train Loss: 2.0253, Train Acc: 0.2488 - Val Loss: 1.8876, Val Acc: 0.2900
+    - Final Value: 1.8876
+----------------------------------------
+Trial 4:
+    - Hyperparameters: {'lr': 0.0005930242508535406, 'batch_size': 32, 'optimizer': 'SGD'}
+    - Epoch 1/3: Train Loss: 2.3984, Train Acc: 0.0942 - Val Loss: 2.3978, Val Acc: 0.0860
+    - Epoch 2/3: Train Loss: 2.3978, Train Acc: 0.0917 - Val Loss: 2.3973, Val Acc: 0.0967
+    - Epoch 3/3: Train Loss: 2.3972, Train Acc: 0.0956 - Val Loss: 2.3967, Val Acc: 0.0967
+    - Final Value: 2.3967
+----------------------------------------
+
+Best Hyperparameters Found:
+    - {'lr': 0.0019318075503189916, 'batch_size': 64, 'optimizer': 'Adam'}

@@ -1,0 +1,22 @@
+# Core Libraries
+numpy			        # Numerical operations and array handling
+pandas			        # Data manipulation (EDA, CSV handling)
+matplotlib		        # Data visualization (plots, EDA)
+seaborn			        # Enhanced visualizations (heatmaps, distributions)
+
+# Image Processing
+opencv-python			# Image loading/preprocessing (resize, grayscale, filters)
+Pillow			        # Alternative image handling (open/save images)
+albumentations			# Advanced image augmentation (blur, noise, rotations)
+
+# Machine Learning & Deep Learning
+scikit-learn			# Metrics, train-test split, utilities
+torch			        # PyTorch (model building, training)
+torchvision			    # PyTorch image datasets/transforms
+keras			        # High-level API for TensorFlow
+optuna                  # Hyperparameter optimization (for advanced tuning)
+torch-directml          # DirectML support for PyTorch (for Windows users)
+
+# Utilities
+tqdm			        # Progress bars for loops/epochs
+jupyter			        # Jupyter Notebook/Lab (interactive coding)

@@ -1,0 +1,28 @@
+original_count: 1256
+augmented_count: 8698
+total_count: 9954
+multiplication_factor: 7.92515923566879
+class_distribution:
+    vesta: 960
+    cicero: 952
+    senatus: 944
+    colosseum: 928
+    laurel: 920
+    roman: 910
+    trajan: 900
+    consul: 864
+    augustus: 864
+    forum: 860
+    aureus: 852
+augmentations_by_class:
+    aureus: 5
+    cicero: 6
+    roman: 6
+    vesta: 7
+    senatus: 7
+    colosseum: 7
+    augustus: 7
+    consul: 7
+    trajan: 8
+    laurel: 9
+    forum: 9
