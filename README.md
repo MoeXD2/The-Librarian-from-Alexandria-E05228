@@ -25,7 +25,7 @@ Before you start working on the project, please follow these setup instructions:
    ```
 
 3. **Start working on the project**  
-   The main code for this project resides in the `notebooks` folder, where you will find Jupyter notebooks numbered sequentially starting from `001`. These notebooks guide you through the project step-by-step. 
+   The main code for this project resides in the `notebooks` and `scripts` folders, where you will find Jupyter notebooks (numbered sequentially starting from `001`) and python files. These notebooks and files guide you through the project step-by-step. 
 
 4. **Data Folder**  
    The `data` folder contains processed images that have been resized, normalized, and converted to RGB. These processed images are ready to be used in the project to speed up the workflow. 
@@ -37,10 +37,14 @@ Before you start working on the project, please follow these setup instructions:
 
 - `.venv/` - Virtual environment folder.
 - `notebooks/` - Jupyter notebooks for the project.
-- `data/` - Processed images (resized, normalized, and converted to RGB) and CSV file (`pages_processed.csv`) with updated image paths pointing to the processed images.
+- `scripts/` - The python file for training the model.
+- `training/` - Training and test results.
+- `saved_models` - The saved models after training for later use. 
+- `data/` - Processed images (resized, normalized, and converted to RGB) and CSV file (`pages_processed.csv`) as well as others with updated image paths pointing to the processed images.
 
 ## Notes
 
 - Always ensure your virtual environment is activated when working on the project.
 - The Jupyter notebooks are sequentially numbered for ease of navigation and following along with the steps.
 - Use the processed images for faster experimentation.
+- You need Python 3.10 if you want to use DirectML, otherwise the code will not run.
