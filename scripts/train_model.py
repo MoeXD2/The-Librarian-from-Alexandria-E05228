@@ -1,27 +1,23 @@
-import os
 import multiprocessing as mp
-from PIL import Image
+import os
 
 import numpy as np
-import pandas as pd
-
-import torch
-import torch_directml  # Python 3.10 is a must for this to work
-import torch.nn as nn
-import torch.optim as optim
-from torch.utils.data import Dataset, DataLoader
-import torchvision.transforms as transforms
-from torch.optim.lr_scheduler import ReduceLROnPlateau
-
-# For stratified sampling and a representative dataset split
-from sklearn.model_selection import StratifiedShuffleSplit
-from sklearn.metrics import classification_report, confusion_matrix
-
 # Optuna is preferred over GridSearchCV or RandomizedSearchCV
 # due to its efficiency and speed for large datasets and complex models
 import optuna
+import pandas as pd
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import torch_directml  # Python 3.10 is a must for this to work
+import torchvision.transforms as transforms
+from PIL import Image
+from sklearn.metrics import classification_report, confusion_matrix
+# For stratified sampling and a representative dataset split
+from sklearn.model_selection import StratifiedShuffleSplit
+from torch.optim.lr_scheduler import ReduceLROnPlateau
+from torch.utils.data import DataLoader, Dataset
 from tqdm import tqdm
-
 
 ##################################################
 # Step 1
