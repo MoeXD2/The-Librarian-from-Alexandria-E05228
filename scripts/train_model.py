@@ -490,7 +490,7 @@ def main():
     scheduler = ReduceLROnPlateau(optimizer, mode="min", factor=0.5, patience=2)
     early_stopping = EarlyStopping(patience=5)
 
-    num_epochs = 20  # Set a reasonable number of epochs for final training
+    num_epochs = 40  # Set a reasonable number of epochs for final training
     best_val_loss = float("inf")
     best_model_state = None
 
