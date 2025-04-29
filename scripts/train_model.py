@@ -275,7 +275,7 @@ class EarlyStopping:
 def objective(trial):
     # Trial parameters with narrower ranges for faster convergence
     lr = trial.suggest_float("lr", 1e-4, 5e-3, log=True)
-    batch_size = trial.suggest_categorical("batch_size", [32, 64])
+    batch_size = trial.suggest_categorical("batch_size", [64, 128])
     optimizer_name = trial.suggest_categorical("optimizer", ["Adam", "SGD"])
     epochs = 3  # Reduced number of epochs for faster trials
 
