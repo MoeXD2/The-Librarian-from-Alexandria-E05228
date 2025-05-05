@@ -1,0 +1,16 @@
+---
+config:
+  layout: dagre
+---
+flowchart LR
+    A["Start: 1,200 Original Images"] --> B["Preprocessing"]
+    E["Model Training"] --> E1["Model 1: LightCNN (with aug)"] & E2["Model 2: LightCNN (no aug)"] & E3["Model 2: MobileNetV2"]
+    E1 --> F1["Accuracy/Eval"]
+    E2 --> F2["Accuracy/Eval"]
+    E3 --> F3["Accuracy/Eval"]
+    F1 --> G["Model Selection Based on Performance"]
+    F2 --> G
+    F3 --> G
+    G --> H["Final Classification System"]
+    B --> C["Augmentation with Albumentations"]
+    C --> E
