@@ -5,11 +5,11 @@
 - Giulia
 - Gabriele
 
-## [Section 1] Introduction
+## Introduction
 
 This project focuses on developing a Convolutional Neural Network (CNN) to classify different font types from ancient manuscript images. Named "The Librarian from Alexandria," our system aims to automatically identify and categorize 11 distinct ancient font types (aureus, cicero, consul, florens, forum, laurel, optimus, pagella, roman, senatus, and trajan) from digitized manuscript pages. This tool would assist historians, paleographers, and archivists in the cataloging and analysis of historical documents, streamlining what is traditionally a manual and expertise-intensive process.
 
-## [Section 2] Methods
+## Methods
 
 Our approach to ancient font classification involved a three-stage process: exploratory data analysis, data augmentation, and model training. Each stage was carefully designed to address the specific challenges of classifying ancient manuscript fonts.
 
@@ -95,7 +95,7 @@ opencv-python==4.7.0.72
 ![Font Classification Pipeline](placeholder_for_pipeline_diagram.png)
 *Figure 1: Overview of the font classification pipeline showing the data preprocessing, augmentation, and model training stages.*
 
-## [Section 3] Experimental Design
+## Experimental Design
 
 Our experimental design focused on assessing the effectiveness of our CNN model for ancient font classification while evaluating the impact of our data augmentation and preprocessing strategies.
 
@@ -126,7 +126,7 @@ We selected several complementary metrics to thoroughly evaluate our model's per
 
 We chose these metrics because font classification presents unique challenges where certain font pairs might be visually similar and easily confused. The combination of overall accuracy with per-class metrics allowed us to identify not only how well the model performed on average but also whether it struggled with specific font types. This detailed analysis was crucial for understanding the practical applicability of our model in real-world historical document analysis.
 
-## [Section 4] Results
+## Results
 
 Our experiments yielded several significant findings regarding ancient font classification using CNNs.
 
@@ -191,7 +191,7 @@ Our results demonstrated that:
 
 These results validate our approach of combining a lightweight CNN architecture with extensive data augmentation for the task of ancient font classification. The high accuracy achieved (93.02%) demonstrates the practical viability of this system for assisting scholars and archivists in the analysis of historical manuscripts.
 
-## [Section 5] Conclusions
+## Conclusions
 
 ### Key Takeaways
 
