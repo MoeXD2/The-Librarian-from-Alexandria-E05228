@@ -132,7 +132,7 @@ We used several metrics to thoroughly evaluate our model's performance:
 
 1. Overall accuracy: The percentage of correctly classified images across all font types, giving us a simple measure of overall performance.
 
-2. Per-class precision, recall, and F1-score: These metrics helped us understand how well the model performed for each individual font type:
+2. Per-class precision, recall, and F1-score (weighted and macro average): These metrics helped us understand how well the model performed for each individual font type:
   - Precision: How well the model avoided misclassifying samples as a particular font
   - Recall: How well the model found all samples of a particular font
   - F1-score: The balance between precision and recall
