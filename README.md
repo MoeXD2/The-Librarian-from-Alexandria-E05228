@@ -1,17 +1,17 @@
 # The Librarian from Alexandria
 
 **Team Members:**
-- Mohammad Khair Hndauoi
-- Giulia
-- Gabriele
+- Mohammad Khair Hndauoi (794491)
+- Julia Milliet Sciorra (E05228)
+- Gabriele (806711)
 
 ## Introduction
 
-This project focuses on developing a Convolutional Neural Network (CNN) to classify different font types from ancient manuscript images. Named "The Librarian from Alexandria," our system aims to automatically identify and categorize 11 distinct ancient font types (aureus, cicero, consul, florens, forum, laurel, optimus, pagella, roman, senatus, and trajan) from digitized manuscript pages. This tool would assist historians, paleographers, and archivists in the cataloging and analysis of historical documents, streamlining what is traditionally a manual and expertise-intensive process.
+This project is about building a CNN that can recognize fonts from old manuscripts. There are 11 fonts we're trying to classify: aureus, cicero, consul, florens, forum, laurel, optimus, pagella, roman, senatus, and trajan. We used a dataset of 1,200 images, which we augmented to create a balanced dataset of 8,000 images.
 
 ## Methods
 
-Our approach to ancient font classification involved a three-stage process: exploratory data analysis, data augmentation, and model training. Each stage was carefully designed to address the specific challenges of classifying ancient manuscript fonts.
+We followed a pretty simple flow. First we explored the data to see what we were working with. Then we used data augmentation to help the model deal with the weirdness and variety in old fonts. After that, we trained a CNN model (with and without augmentations) and a pretrained model (MobileNetV2) and tuned them to recognize the different fonts as accurately as possible.
 
 ### Data Analysis and Preprocessing
 
@@ -30,7 +30,7 @@ To address these issues, we implemented a preprocessing pipeline that:
 
 ### Data Augmentation
 
-To address class imbalance and improve model generalization, we implemented extensive data augmentation using the Albumentations library. Our augmentation pipeline included:
+To address class slight imbalance and improve model generalization, we implemented data augmentation using the Albumentations library. Our augmentation pipeline included:
 
 - Rotation (up to 30 degrees)
 - Brightness and contrast adjustments
@@ -44,7 +44,7 @@ We used a class-specific augmentation strategy, calculating the necessary augmen
 
 ### Model Architecture and Training
 
-We designed a lightweight CNN architecture (LightCNN) specifically for font classification:
+We designed a lightweight CNN architecture (LightCNN) as follows:
 
 ```
 LightCNN(
@@ -69,32 +69,54 @@ LightCNN(
 )
 ```
 
-Key training innovations included:
-- **Memory-efficient image caching**: Our custom FontDataset class cached transformed images in memory to accelerate training
-- **Hyperparameter optimization**: We used Optuna to efficiently search for optimal learning rate, batch size, and optimizer type
-- **Stratified dataset splitting**: To maintain class balance, we used 64% for training, 16% for validation, and 20% for testing
-- **Early stopping and learning rate scheduling**: To prevent overfitting and improve convergence
+
+#### Pretrained Model: MobileNetV2
+
+We also utilized a pretrained MobileNetV2 model for comparison. The architecture was modified as follows:
+
+```python
+def create_model(num_classes=11, freeze_layers=True):
+    # Load pre-trained MobileNetV2
+    model = models.mobilenet_v2(weights="IMAGENET1K_V1")
+
+    # Freeze early layers to preserve learned features
+    if freeze_layers:
+        for param in list(model.parameters())[:-8]:  # Freeze all but the last few layers
+            param.requires_grad = False
+
+    # Replace the final fully connected layer
+    in_features = model.classifier[1].in_features
+    model.classifier[1] = nn.Linear(in_features, num_classes)
+
+    return model
+```
+
+#### Training Process
+
+The training process included:
+- **Memory-efficient image caching**: The custom `FontDataset` class cached transformed images in memory to accelerate training.
+- **Hyperparameter optimization**: We used Optuna to efficiently search for optimal learning rate, batch size, and optimizer type.
+- **Stratified dataset splitting**: To maintain class balance, we used stratified splitting for training, validation, and test sets.
+- **Early stopping and learning rate scheduling**: To prevent overfitting and improve convergence.
 
 ### Development Environment
 
-Our model was trained using PyTorch with torch_directml for GPU acceleration on an AMD RX 6600 XT graphics card. The complete environment can be recreated using the following key packages:
+Our model was trained using PyTorch with torch_directml for GPU acceleration on an AMD RX 6600 XT graphics card. The training process was conducted on a Windows 10 machine with the following specifications:
+- **CPU**: AMD Ryzen 5 5600X
+- **RAM**: 32 GB
+- **GPU**: AMD RX 6600 XT
+- **OS**: Windows 11
+- **Python**: 3.10.11
 
-```
-pytorch==2.0.0
-torch-directml==0.2.0.dev230407
-albumentations==1.3.1
-numpy==1.24.3
-pandas==2.0.1
-scikit-learn==1.2.2
-Pillow==9.5.0
-matplotlib==3.7.1
-optuna==3.1.1
-opencv-python==4.7.0.72
-```
+![Font Classification Pipeline](images/pipeline_diagram.png)
+*Figure 1: Overview of the font classification pipeline showing the data preprocessing, augmentation, and model training stages (Mermaid Chart).*
 
+<<<<<<< HEAD
 ![Font Classification Pipeline](placeholder_for_pipeline_diagram.png)
 *Figure 1: Overview of the font classification pipeline showing the data preprocessing, augmentation, and model training stages.*
 
+=======
+>>>>>>> 066b1bc420d40f74c55c22d5c04aff02b16cda6d
 ## Experimental Design
 
 Our experimental design focused on assessing the effectiveness of our CNN model for ancient font classification while evaluating the impact of our data augmentation and preprocessing strategies.
@@ -109,7 +131,7 @@ We compared our approach against two baselines:
 
 1. **Basic CNN without augmentation**: A similar CNN architecture trained only on the original, preprocessed dataset (approximately 1,200 images) without any data augmentation. This baseline helped us quantify the impact of our augmentation strategy.
 
-2. **Transfer learning with ResNet50**: We fine-tuned a pre-trained ResNet50 model on our dataset as a more complex baseline. This comparison helped us evaluate whether our lightweight custom architecture could achieve comparable results to a deeper, more complex model while requiring fewer computational resources.
+2. **Transfer learning with MobileNetV2**: We fine-tuned a pre-trained MobileNetV2 model on our dataset as a more complex baseline. This comparison helped us evaluate whether our lightweight custom architecture could achieve comparable results to a deeper, more complex model while requiring fewer computational resources.
 
 ### Evaluation Metrics
 
@@ -135,7 +157,7 @@ Our experiments yielded several significant findings regarding ancient font clas
 Our LightCNN model achieved impressive results when trained on the augmented dataset:
 
 - **Overall accuracy**: 93.02% on the test set, significantly outperforming our baselines
-- **Per-class performance**: F1-scores ranged from 0.84 to 0.99, with most classes exceeding 0.90
+- **Per-class performance**: F1-scores ranged from 0.84 to 0.99 (a bit suspicious), with most classes exceeding 0.90
 - **Augmentation impact**: Training with our augmented dataset improved accuracy by approximately 16.4% compared to training on the original dataset alone (93.02% vs 76.59%)
 
 The confusion matrix revealed interesting patterns in font classification:
@@ -195,27 +217,14 @@ These results validate our approach of combining a lightweight CNN architecture 
 
 ### Key Takeaways
 
-This project has successfully demonstrated that a lightweight CNN architecture, when combined with effective preprocessing and data augmentation strategies, can accurately classify ancient font types from manuscript images with over 93% accuracy. Our approach balanced computational efficiency with classification performance, achieving better results than MobileNet V2 while requiring fewer parameters. The careful attention to dataset preparation—including standardization of image dimensions, addressing class imbalance through targeted augmentation, and quality normalization—proved essential to improving accuracy by more than 16 percentage points compared to training on the original dataset alone.
-
-The most successful aspects of our approach were:
-1. The class-specific data augmentation strategy that effectively balanced the dataset
-2. Our lightweight CNN architecture that achieved high accuracy while maintaining efficiency
-3. The comprehensive preprocessing pipeline that standardized variable-quality inputs
-
-This "Librarian from Alexandria" system represents a significant step toward automating the analysis and cataloging of historical manuscripts, potentially accelerating scholarly research in paleography and historical linguistics.
+This project has successfully demonstrated that a lightweight CNN architecture, when combined with effective preprocessing and data augmentation strategies, can accurately classify ancient font types from manuscript images with over 93% accuracy. Our approach balanced computational efficiency with classification performance, achieving better results than MobileNet V2 while requiring fewer parameters. The careful attention to dataset preparation, including standardization of image dimensions, addressing class imbalance through targeted augmentation, and quality normalization, proved essential to improving accuracy by more than 16 percentage points compared to training on the original dataset alone.
 
 ### Limitations and Future Work
 
-While our current model performs well, several limitations and opportunities for improvement remain:
+While our project achieved promising results, there were some limitations:
 
-1. **Font confusion patterns**: The confusion matrix reveals persistent challenges in distinguishing between certain font pairs (particularly class 10 with class 2, and class 0 with class 10). Future work could focus on developing specialized features or model architectures to better differentiate these similar font types.
+1. **Limited dataset size**: The original dataset contained only 1,200 images, which required extensive augmentation to create a balanced dataset. A larger dataset with more diverse samples could further improve model performance.
 
-2. **Severely degraded texts**: Our approach focused on relatively well-preserved manuscript images. Future research should investigate robustness to more severely degraded texts with stains, tears, or faded ink, which are common in historical archives.
+2. **Hardware constraints**: We lacked access to an Nvidia GPU for CUDA support, which is widely used for deep learning. Instead, we relied on open-source alternatives like torch_directml for AMD GPUs. While effective, this setup posed challenges in terms of compatibility and performance.
 
-3. **Expanding the font catalog**: Our training data included only 11 ancient font types, whereas historical archives contain numerous additional fonts and variations. Expanding the classification capabilities would enhance the system's practical utility.
-
-4. **Multi-level analysis**: The current system classifies entire manuscript pages; developing techniques for font identification at the paragraph or line level would allow for more granular analysis of documents with multiple font types.
-
-5. **Multi-task learning**: Future research could explore approaches that simultaneously classify font types while performing related tasks such as dating documents or identifying scribes, potentially leveraging the relationships between these features to improve overall performance.
-
-These directions for future work could further enhance the system's accuracy and utility for scholars and archivists working with historical manuscripts.
+Future work could address these limitations by expanding the dataset and leveraging more powerful hardware to optimize training and evaluation processes.
