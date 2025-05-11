@@ -111,12 +111,6 @@ Our model was trained using PyTorch with torch_directml for GPU acceleration on 
 ![Font Classification Pipeline](images/pipeline_diagram.png)
 *Figure 1: Overview of the font classification pipeline showing the data preprocessing, augmentation, and model training stages (Mermaid Chart).*
 
-<<<<<<< HEAD
-![Font Classification Pipeline](placeholder_for_pipeline_diagram.png)
-*Figure 1: Overview of the font classification pipeline showing the data preprocessing, augmentation, and model training stages.*
-
-=======
->>>>>>> 066b1bc420d40f74c55c22d5c04aff02b16cda6d
 ## Experimental Design
 
 Our experimental design focused on assessing the effectiveness of our CNN model for ancient font classification while evaluating the impact of our data augmentation and preprocessing strategies.
