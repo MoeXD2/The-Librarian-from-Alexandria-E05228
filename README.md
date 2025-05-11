@@ -18,13 +18,13 @@ For this project, we took a straightforward approach. We first explored the data
 When we first looked at our dataset, we found several challenges that needed to be addressed:
 
 - The dataset had some class imbalance, with font representation varying from 86 samples (forum) to 142 samples (aureus)
-- The images had very different dimensions, ranging from 1,854×2,645 pixels to 9,594×6,701 pixels
+- The images had very different dimensions, ranging from 1,854x2,645 pixels to 9,594x6,701 pixels
 - There was format inconsistency - about 55% were RGB and 45% were grayscale
 - The quality of images varied significantly with differences in blurriness and contrast
 
 To handle these issues, we implemented preprocessing that:
 1. Converted all grayscale images to RGB
-2. Resized all images to fit within a 512×512 pixel square while keeping their aspect ratios
+2. Resized all images to fit within a 512x512 pixel square while keeping their aspect ratios (we actually ended up resizing them to 224x224 during training for the MobileNetV2 model as well as the custom model because 512x512 was too large for the GPU memory and kept crashing)
 3. Placed the resized images on a white background to create uniform inputs
 4. Normalized the pixel values to the range [0-1]
 
