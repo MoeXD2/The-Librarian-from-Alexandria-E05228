@@ -28,7 +28,9 @@ To handle these issues, we implemented preprocessing that:
 3. Placed the resized images on a white background to create uniform inputs
 4. Normalized the pixel values to the range [0-1]
 
-When we resized the images to 512x512, some ended up with white edges because the original dimensions didn't match the new square shape exactly. Our professor suggested removing these edges, but after some research, we found that CNNs usually learn to ignore them during training. Since our results were still good with the edges left in, and removing them would have meant starting over (which would take too long given the image sizes), we decided to keep them.
+When resizing the images to 512x512, we preserved the original aspect ratio and placed the resized image on a white background. This sometimes introduced white borders around the content. We later implemented a cleaner approach that avoids this by resizing and then center-cropping the images, which removes the padding entirely.
+
+However, switching to that method would require us to regenerate all preprocessed data, reapply data augmentation, retrain all three models, and update the presentation of results. Given that our current pipeline still produced strong results, we chose not to redo everything just for this detail. Still, the cropping-based method is the better practice and is included in the codebase to show how it should be handled.
 
 ### Data Augmentation
 
