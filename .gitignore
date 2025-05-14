@@ -1,5 +1,6 @@
-# Ignore the img_augmented folder inside the data folder as it is too large
+# Ignore the img_augmented and img folders as they are too large
 data/img_augmented/
+data/img/
 
 # Ignore venv folders
 venv/
