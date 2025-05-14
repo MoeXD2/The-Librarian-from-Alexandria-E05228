@@ -3,7 +3,7 @@
 **Team Members:**
 - Mohammad Khair Hndauoi (794491)
 - Julia Milliet Sciorra (E05228)
-- Gabriele (806711)
+- Gabriele Goglia (806711)
 
 ## Introduction
 
