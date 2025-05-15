@@ -475,7 +475,8 @@ def main():
     )
 
     device = (
-        torch_directml.device() if torch.cuda.is_available() else torch.device("cpu")
+        torch.device("cuda") if torch.cuda.is_available()
+        else torch_directml.device()
     )  # Using DirectML for GPU acceleration with AMD RX 6600 XT - CPU was too slow
     model = create_model(num_classes=11)
     model.to(device)
